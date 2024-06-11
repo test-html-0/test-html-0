@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <div id="job-container">
+      <p>Loading...</p>
+    </div>
+  </body>
+  <script>
+    const baseUrl = "https://preboarding-dev-api.talentvare.com/v1"; // Replace with your actual API URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const jobId = urlParams.get("jobId");
+
+    function getJobById() {
+      const jobContainer = document.getElementById("job-container");
+      const loadingElement = jobContainer.querySelector("p");
+      loadingElement.textContent = "Loading..."; // Update loading text
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", `${baseUrl}/Job/public-job-detail?jobId=${jobId}`);
+      xhr.setRequestHeader("Content-Type", "application/json"); // Set for JSON data
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const res = JSON.parse(xhr.responseText);
+          if (res.status_code === 200) {
+            loadingElement.remove(); // Remove loading text on success
+            // DYNAMIC HEAD COMPONENT - START
+            // Set title
+            document.title = res.data.title;
+
+            // Create meta elements
+            const metaDescription = document.createElement("meta");
+            metaDescription.name = "description";
+            metaDescription.content = res.data.description.replace(
+              /<\/?[^>]+(>|$)/g,
+              ""
+            ); // Strip HTML tags
+
+            const metaCompanyName = document.createElement("meta");
+            metaCompanyName.name = "company";
+            metaCompanyName.content = res.data.companyName;
+
+            const metaJobType = document.createElement("meta");
+            metaJobType.name = "jobType";
+            metaJobType.content = res.data.type;
+
+            const metaLocation = document.createElement("meta");
+            metaLocation.name = "location";
+            metaLocation.content = res.data.location;
+
+            // Append meta elements to the head
+            document.head.appendChild(metaDescription);
+            document.head.appendChild(metaCompanyName);
+            document.head.appendChild(metaJobType);
+            document.head.appendChild(metaLocation);
+
+            // DYNAMIC HEAD COMPONENT - END
+
+            // Update jobContainer content with the received data (replace with your specific logic)
+            jobContainer.innerHTML = `
+          <h2>${res.data.title}</h2>
+          <p>${res.data.description}</p>
+          `;
+            console.log(res.data);
+          } else {
+            loadingElement.textContent = res.message || "Something went wrong.";
+          }
+        } else {
+          loadingElement.textContent = "Error fetching job details.";
+        }
+      };
+
+      xhr.onerror = function () {
+        loadingElement.textContent = "Error communicating with server.";
+      };
+
+      const jobData = { jobId }; // Assuming you only need jobId in the request
+      xhr.send(JSON.stringify(jobData)); // Send the job ID
+    }
+
+    if (jobId) {
+      // Check if a job ID element exists
+      getJobById();
+    } else {
+      console.error("No Job ID found.");
+    }
+  </script>
+</html>
