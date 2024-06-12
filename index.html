@@ -92,12 +92,21 @@
 
             // Loop through each meta tag and update its content
             ogMetaTags.forEach((tag) => {
-              tag.setAttribute(
-                "content",
-                `${res.data.title} - ${res.data.companyName} - ${jobId}`
-              );
-              tag.setAttribute("content", res.data.logo);
-              tag.setAttribute("content", res.data.logo);
+              const propertyName = tag.getAttribute("property");
+              switch (propertyName) {
+                case "og:title":
+                  tag.setAttribute(
+                    "content",
+                    `${res.data.title} - ${res.data.companyName} - ${jobId}`
+                  );
+                  break;
+                case "og:image":
+                  tag.setAttribute("content", res.data.logo);
+                  break;
+                case "og:url":
+                  tag.setAttribute("content", res.data.logo);
+                  break;
+              }
             });
 
             // DYNAMIC HEAD COMPONENT - END
