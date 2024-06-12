@@ -1,9 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta property="og:title" content="Test Title" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://img.freepik.com/free-psd/we-are-hiring-banner-vacancy-announcement-with-editable-text-effect_47987-11801.jpg"
+    />
+    <meta
+      property="og:url"
+      content="https://img.freepik.com/free-psd/we-are-hiring-banner-vacancy-announcement-with-editable-text-effect_47987-11801.jpg"
+    />
+    <title>Job Post - Company Name - Job ID</title>
+    <style>
+      .bgWhite {
+        background-color: #fff;
+      }
+
+      .br-10 {
+        border-radius: 10px;
+      }
+    </style>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <script>
       tailwind.config = {
@@ -16,117 +35,297 @@
         },
       };
     </script>
-    <style type="text/tailwindcss">
-      @layer utilities {
-        .content-auto {
-          content-visibility: auto;
-        }
-      }
-    </style>
-    <meta property="og:title" content="Test Title" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:image"
-      content="/static/website-social-card-44070c4a901df708aa1563ac4bbe595a.jpg"
-    />
-    <meta property="og:url" content="https://www.colbyfayock.com" />
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
   </head>
   <body>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
-    <div id="job-container">
-      <p>Loading...</p>
+    <div
+      id="job-container"
+      className="h-[100vh] bg-[#f3f8ff] p-10"
+      style="background-color: #f3f8ff; padding: 1rem; height: 100vh"
+    >
+      <div class="w-full flex flex-col gap-3">
+        <div class="w-full">
+          <div class="bgWhite br-10 w-full">
+            <div class="flex items-center p-5">
+              <div>
+                <div class="flex items-center gap-3">
+                  <p
+                    id="job-title"
+                    class="mb-[12px] text-[24px] font-semibold capitalize"
+                  >
+                    Job Title
+                  </p>
+                </div>
+                <div class="flex items-center">
+                  <div class="flex items-center pr-[12px] mr-[12px] border-r-2">
+                    <div
+                      class="h-[30px] w-[30px] flex justify-center items-center rounded-full border-style mr-[6px]"
+                    >
+                      <img
+                        id="company-logo"
+                        src="https://preboarding-dev-api.talentvare.com/Uploads/Company.png"
+                        alt="card-logo"
+                        class="rounded-full"
+                      />
+                    </div>
+                    <p
+                      id="company-name"
+                      class="m-0 p-0 text-[14px] paragraph-color"
+                    >
+                      Company Name
+                    </p>
+                  </div>
+                  <p
+                    id="posted-date"
+                    class="m-0 p-0 text-[14px] paragraph-color"
+                  >
+                    Posted on "DD/MM/YYYY"
+                  </p>
+                </div>
+              </div>
+              <div class="ml-auto">
+                <a
+                  href="https://preboarding-web.talentvare.com/app/register"
+                  class="bg-black/95 border rounded-[6px] px-3 py-2 text-sm text-center text-white cursor-pointer hover:text-white hover:bg-black"
+                >
+                  Sign Up
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-4 gap-3"
+      >
+        <div class="bgWhite br-10 p-4">
+          <div>
+            <p style="font-weight: 600" class="text-[20px]">Role & Job Type</p>
+          </div>
+          <div class="my-4">
+            <div
+              class="py-1 px-1.5 mr-2 rounded-[4px] flex items-center w-fit"
+              style="background-color: #f8f6a9"
+            >
+              <span
+                id="job-category"
+                class="text-[12px]"
+                style="color: #ab6d1b; font-weight: 600"
+                >Design</span
+              >
+            </div>
+          </div>
+          <div class="flex mt-2.5">
+            <div class="flex items-center mr-2.5">
+              <img
+                id="job-mode-icon"
+                style="width: 16px; height: 16px; margin-right: 3px"
+                src="https://static.thenounproject.com/png/1134418-200.png"
+                alt="jobLevel"
+              />
+              <span id="job-mode" class="text-[16px] font-semibold mr-[34px]"
+                >Contractual</span
+              >
+            </div>
+
+            <div class="flex items-center mr-2.5">
+              <img
+                id="job-type-icon"
+                style="width: 16px; height: 16px; margin-right: 3px"
+                src="https://static.thenounproject.com/png/1134418-200.png"
+                alt="jobLevel"
+              />
+              <span id="job-type" class="text-[16px] font-semibold mr-[34px]"
+                >Full-time</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="bgWhite br-10 p-4">
+          <div>
+            <p style="font-weight: 600" class="text-[20px]">Job Level</p>
+          </div>
+          <div class="my-4">
+            <div
+              class="py-1 px-1.5 mr-2 rounded-[4px] flex items-center w-fit"
+              style="background-color: #f8f6a9"
+            >
+              <span
+                id="job-level"
+                class="text-[12px]"
+                style="color: #ab6d1b; font-weight: 600"
+                >Senior Level</span
+              >
+            </div>
+          </div>
+          <div class="flex mt-2.5">
+            <div class="flex items-center">
+              <img
+                id="job-exp-icon"
+                style="width: 16px; height: 16px"
+                src="https://static.thenounproject.com/png/1134418-200.png"
+                alt="onsite"
+              />
+              <span id="job-exp" class="text-[16px] font-semibold ml-2"
+                >3-5 yrs</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="bgWhite br-10 p-4">
+          <div>
+            <p style="font-weight: 600" class="text-[20px]">
+              Working Hours & Location
+            </p>
+          </div>
+          <div class="my-4">
+            <div
+              class="py-1 px-1.5 mr-2 rounded-[4px] flex items-center w-fit"
+              style="background-color: #f8f6a9"
+            >
+              <span
+                id="job-working-hours"
+                class="text-[12px]"
+                style="color: #ab6d1b; font-weight: 600"
+                >8hr/Day</span
+              >
+            </div>
+          </div>
+          <div class="flex mt-2.5">
+            <div class="flex items-center">
+              <img
+                id="job-location-icon"
+                style="width: 16px; height: 16px"
+                src="https://static.thenounproject.com/png/1134418-200.png"
+                alt="onsite"
+              />
+              <span id="job-location" class="text-[16px] font-semibold ml-2"
+                >New York, USA</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg mt-3 p-4">
+        <div>
+          <p style="font-weight: 600" class="text-2xl mb-3">Job Description</p>
+          <div>
+            <p id="job-desc">Hardcoded Job Description Data Here...</p>
+          </div>
+        </div>
+      </div>
     </div>
+    <p id="loader"></p>
   </body>
   <script>
-    const baseUrl = "https://preboarding-dev-api.talentvare.com/v1"; // Replace with your actual API URL
+    // GETTING "jobId" FROM URL PARAMS
     const urlParams = new URLSearchParams(window.location.search);
     const jobId = urlParams.get("jobId");
 
-    function getJobById() {
-      const jobContainer = document.getElementById("job-container");
-      const loadingElement = jobContainer.querySelector("p");
-      loadingElement.textContent = "Loading..."; // Update loading text
+    // GETTING ALL META TAGS WITH "og:" PROPERTY
+    const ogMetaTags = document.querySelectorAll('meta[property^="og:"]');
 
+    // GETTING UI ELEMENTS BY THEIR IDs
+    const jobContainer = document.getElementById("job-container");
+    const jobTitle = document.getElementById("job-title");
+    const companyLogo = document.getElementById("company-logo");
+    const companyName = document.getElementById("company-name");
+    const postedDate = document.getElementById("posted-date");
+    const jobCategory = document.getElementById("job-category");
+    const jobMode = document.getElementById("job-mode");
+    const jobModeIcon = document.getElementById("job-mode-icon");
+    const jobType = document.getElementById("job-type");
+    const jobTypeIcon = document.getElementById("job-type-icon");
+    const jobLevel = document.getElementById("job-level");
+    const jobExp = document.getElementById("job-exp");
+    const jobExpIcon = document.getElementById("job-exp-icon");
+    const jobWorkingHours = document.getElementById("job-working-hours");
+    const jobLocation = document.getElementById("job-location");
+    const jobLocationIcon = document.getElementById("job-location-icon");
+    const jobDesc = document.getElementById("job-desc");
+    const loader = document.getElementById("loader");
+
+    // FUNCTION MAKE AJAX CALL TO FETCH API DATA
+    function getJobById() {
+      loader.textContent = "Loading...";
+
+      const baseUrl = "https://preboarding-dev-api.talentvare.com/v1";
+
+      // INITIALIZING HTTP REQUEST TO HIT BACKEND API AND FETCH DYNAMIC DATA
       const xhr = new XMLHttpRequest();
+
+      // MAKING AN API CALL TO FETCH DATA FROM THE ENDPOINT
       xhr.open("GET", `${baseUrl}/Job/public-job-detail?jobId=${jobId}`);
-      xhr.setRequestHeader("Content-Type", "application/json"); // Set for JSON data
+
+      // SETTING HEADER FOR API REQUEST
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      // ATTACHING CALL FUNCTION TO PERFORM UI MANIPULATION ON RESPONSE FROM API
       xhr.onload = function () {
+        // IF RESPONSE IS SUCCESS
         if (xhr.status === 200) {
           const res = JSON.parse(xhr.responseText);
           if (res.status_code === 200) {
-            loadingElement.remove(); // Remove loading text on success
-            // DYNAMIC HEAD COMPONENT - START
-            // Set title
-            document.title = res.data.title;
+            // REMOVING LOADING TEXT FROM SCREEN
+            loader.remove();
 
-            // Create meta elements
-            const metaDescription = document.createElement("meta");
-            metaDescription.name = "description";
-            metaDescription.content = res.data.description.replace(
-              /<\/?[^>]+(>|$)/g,
-              ""
-            ); // Strip HTML tags
+            // STORING API RESPONSE IN SEPARATE VARIABLE
+            const jobData = res.data;
 
-            const metaCompanyName = document.createElement("meta");
-            metaCompanyName.name = "company";
-            metaCompanyName.content = res.data.companyName;
+            if (jobData) {
+              // UPDATING TITLE
+              document.title = `${jobData.title} - ${jobData.companyName} - ${jobData.jobId}`;
 
-            const metaJobType = document.createElement("meta");
-            metaJobType.name = "jobType";
-            metaJobType.content = res.data.type;
+              // UPDATING UI CONTENT
+              postedDate.textContent = moment(jobData.createdOn).format(
+                "DD MMM YYYY"
+              );
+              jobTitle.textContent = jobData.title;
+              companyLogo.src = jobData.logo;
+              companyName.textContent = jobData.companyName;
+              jobCategory.textContent = jobData.category;
+              jobMode.textContent = jobData.mode;
+              jobType.textContent = jobData.type;
+              jobLevel.textContent = jobData.level;
+              jobLocation.textContent = jobData.location;
+              jobExp.textContent = jobData.experience;
+              jobWorkingHours.textContent = `${jobData.workingHours} hr/Day`;
+              jobDesc.innerHTML = jobData.description;
 
-            const metaLocation = document.createElement("meta");
-            metaLocation.name = "location";
-            metaLocation.content = res.data.location;
+              // LOOPING THROUGH EACH META TAG TO UPDATE ITS CONTENT
+              ogMetaTags.forEach((tag) => {
+                // GETTING TAG's PROPERTY
+                const propertyName = tag.getAttribute("property");
 
-            // Append meta elements to the head
-            document.head.appendChild(metaDescription);
-            document.head.appendChild(metaCompanyName);
-            document.head.appendChild(metaJobType);
-            document.head.appendChild(metaLocation);
-
-            // Get all meta tags with the property "og:"
-            const ogMetaTags = document.querySelectorAll(
-              'meta[property^="og:"]'
-            );
-
-            // Loop through each meta tag and update its content
-            ogMetaTags.forEach((tag) => {
-              const propertyName = tag.getAttribute("property");
-              switch (propertyName) {
-                case "og:title":
-                  tag.setAttribute(
-                    "content",
-                    `${res.data.title} - ${res.data.companyName} - ${jobId}`
-                  );
-                  break;
-                case "og:image":
-                  tag.setAttribute("content", res.data.logo);
-                  break;
-                case "og:url":
-                  tag.setAttribute("content", res.data.logo);
-                  break;
-              }
-            });
-
-            // DYNAMIC HEAD COMPONENT - END
-
-            // Update jobContainer content with the received data (replace with your specific logic)
-            jobContainer.innerHTML = `
-          <h2>${res.data.title}</h2>
-          <p>${res.data.description}</p>
-          `;
-            console.log(res.data);
+                // CONDITIONALLY SETTING
+                switch (propertyName) {
+                  case "og:title":
+                    tag.setAttribute(
+                      "content",
+                      `${jobData.title} - ${jobData.companyName} - ${jobData.jobId}`
+                    );
+                    break;
+                  case "og:image":
+                    tag.setAttribute("content", jobData.logo);
+                    break;
+                  case "og:url":
+                    tag.setAttribute("content", jobData.logo);
+                    break;
+                }
+              });
+            } else {
+              loader.textContent = res.message || "No data found.";
+            }
           } else {
-            loadingElement.textContent = res.message || "Something went wrong.";
+            loader.textContent = res.message || "Something went wrong.";
           }
         } else {
-          loadingElement.textContent = "Error fetching job details.";
+          loader.textContent = "Error fetching job details.";
         }
       };
 
       xhr.onerror = function () {
-        loadingElement.textContent = "Error communicating with server.";
+        loader.textContent = "Error while communicating with server.";
       };
 
       const jobData = { jobId }; // Assuming you only need jobId in the request
